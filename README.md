@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/ZeadShalaby/Gadwalls-System">
-          <img src="https://imgur.com/Lb9Jge3.png?w=1600" alt="Logo" width="490" height="380">
+          <img src="https://imgur.com/hcmFk7u.png?w=1600" alt="Logo" width="490" height="380">
     
   </a>
 
@@ -38,7 +38,7 @@
 ## About The Project
 it's a projects coded in Backend Laravel & blade .
 Describe of the Project:
-The "Certificate System" project aims to create a secure and reliable digital certificate issuance system. It allows users to upload Excel sheets containing student information, automatically generates personalized certificates, and creates unique QR codes for verification. The system sends notifications via Slack upon certificate issuance and automatically emails the certificates in PDF format to the users. The project enhances the credibility of the certificates while minimizing the risk of fraud through QR code verification and efficient communication.
+Gadwalls is a user-friendly cashier application for retail stores and restaurants. It streamlines sales and purchases by offering multiple payment options, generating invoices, and managing inventory in real-time. With sales reporting and customer management features, it helps businesses enhance efficiency and improve customer service.
 
 ## Built With
 
