@@ -1,0 +1,28 @@
+// عناصر HTML
+const body = document.querySelector("body"),
+    sidebar = body.querySelector("nav"),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text");
+
+// إضافة حدث النقر على الزر لفتح وإغلاق الشريط الجانبي
+toggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+});
+
+// عند النقر على صندوق البحث، يتم فتح الشريط الجانبي
+searchBtn.addEventListener("click", () => {
+    sidebar.classList.remove("close");
+});
+
+// التحكم في وضع الإضاءة والظلام
+modeSwitch.addEventListener("click", () => {
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+        modeText.innerText = "Light mode";
+    } else {
+        modeText.innerText = "Dark mode";
+    }
+});
