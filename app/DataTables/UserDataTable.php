@@ -29,6 +29,8 @@ class UserDataTable extends DataTable
             ->setRowId('id')
             ->editColumn('role', function ($row): mixed {
                 return $row->getRoleName();
+            })->editColumn('action', function ($row) {
+                return view('Data.Action.user', ['id' => $row->id])->render();
             });
     }
 
@@ -45,6 +47,7 @@ class UserDataTable extends DataTable
      */
     public function html(): HtmlBuilder
     {
+
         $languageUrl = $this->getLanguageUrl();
         return $this->builder()
             ->setTableId('user-table')
@@ -52,14 +55,15 @@ class UserDataTable extends DataTable
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
+            ->responsive(true)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                Button::make('excel')->className('btn btn-success'),
+                Button::make('csv')->className('btn btn-info'),
+                Button::make('pdf')->className('btn btn-danger'),
+                Button::make('print')->className('btn btn-primary'),
+                Button::make('reset')->className('btn btn-secondary'),
+                Button::make('reload')->className('btn btn-dark')
             ])
             ->parameters([
                 'lengthChange' => true,

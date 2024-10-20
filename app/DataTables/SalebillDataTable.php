@@ -34,8 +34,10 @@ class SalebillDataTable extends DataTable
             })
             ->editColumn('user_id', function ($row): mixed {
                 return $row->user->name;
-            })
-        ;
+            })->editColumn('action', function ($row) {
+                return view('Data.Action.salebill', ['id' => $row->id])->render();
+            });
+
     }
 
     /**

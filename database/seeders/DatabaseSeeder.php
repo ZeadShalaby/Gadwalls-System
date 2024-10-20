@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $defSupplier = Supplier::factory()->create([
             'name' => 'supplier',
             'email' => 'supplier@gmail.com',
-            'password' => 'supplier',
+            'password' => 'Supplier*',
             'role' => RoleEnums::SUPPLIERS->value,
         ]);
 
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         $defUser = User::factory()->create([
             'name' => 'user',
             'email' => 'user@gmail.com',
-            'password' => 'user',
+            'password' => 'User10**',
             'role' => RoleEnums::USER->value,
         ]);
 

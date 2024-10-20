@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->decimal('salary', 10, 2); //? ex:12345678.90
             $table->string('notes');
             $table->integer('quantity');
+            $table->integer('type_discount')->default(0);
+            $table->integer('type_payment')->default(0);
+            $table->decimal('total', 20, 2);
             $table->timestamps();
         });
     }

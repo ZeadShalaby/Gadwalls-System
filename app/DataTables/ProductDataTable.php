@@ -8,6 +8,7 @@ use App\Traits\LanguageTrait;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
@@ -31,8 +32,13 @@ class ProductDataTable extends DataTable
             ->setRowId('id')
             ->editColumn('supplier_id', function ($row): mixed {
                 return $row->supplier->name;
+            })
+            ->editColumn('store_id', function ($row): mixed {
+                return $row->store->name;
             })->editColumn('expire_date', function ($row): mixed {
                 return $row->expire_date ? Carbon::parse($row->expire_date)->format('Y-m-d') : 'N/A';
+            })->editColumn('action', function ($row) {
+                return view('Data.Action.product', ['id' => $row->id])->render();
             });
 
     }
@@ -50,25 +56,35 @@ class ProductDataTable extends DataTable
      */
     public function html(): HtmlBuilder
     {
-
         $languageUrl = $this->getLanguageUrl();
 
         return $this->builder()
             ->setTableId('product-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->dom('Bfrtip')
+            ->dom('Bfrtip') // <"row"<"col-sm-6"l><"col-sm-6"f>>Brtip
             ->orderBy(1)
             ->responsive(true)
             ->selectStyleSingle()
             ->buttons([
-                Button::make('excel')->className('btn btn-success'),
-                Button::make('csv')->className('btn btn-info'),
-                Button::make('pdf')->className('btn btn-danger'),
-                Button::make('print')->className('btn btn-primary'),
-                Button::make('reset')->className('btn btn-secondary'),
-                Button::make('reload')->className('btn btn-dark')
+                Button::make('excel')
+                    ->className('btn btn-success')
+                    ->filename($this->filename()),
+                Button::make('csv')
+                    ->className('btn btn-info')
+                    ->filename($this->filename()),
+                Button::make('pdf')
+                    ->className('btn btn-danger')
+                    ->filename($this->filename()),
+                Button::make('print')
+                    ->className('btn btn-primary')
+                    ->filename($this->filename()),
+                Button::make('reset')
+                    ->className('btn btn-secondary'),
+                Button::make('reload')
+                    ->className('btn btn-dark'),
             ])
+
             ->parameters([
                 'lengthChange' => true,
                 'language' => [
@@ -79,9 +95,10 @@ class ProductDataTable extends DataTable
                 'pagingType' => 'simple_numbers',
                 'lengthMenu' => [[15, 25, 50, -1], [15, 25, 50, 'الكل']],
                 'order' => [[1, 'asc']],
-                'buttons' => ['excel', 'csv', 'pdf', 'print', 'reset', 'reload'],
+                'buttons' => ['excel', 'csv', 'pdf', 'print', 'reset', 'reload', 'import'], // Ensure import is listed
             ]);
     }
+
 
     /**
      * Get the dataTable columns definition.
@@ -99,6 +116,9 @@ class ProductDataTable extends DataTable
             Column::make('supplier_id')
                 ->title(__('gadwalls.supplier'))
                 ->addClass('text-center'),
+            Column::make('store_id')
+                ->title(__('gadwalls.stores'))
+                ->addClass('text-center'),
             Column::make('code')
                 ->title(__('gadwalls.code')),
             Column::make('quantity')
@@ -107,10 +127,9 @@ class ProductDataTable extends DataTable
             Column::make('expire_date')
                 ->title(__('gadwalls.expire'))
                 ->addClass('text-center'),
-            Column::computed('action')->title(__('gadwalls.action'))->exportable(false)->printable(false)->width(100)->addClass('text-center'),
+            Column::computed('action')->title(__('gadwalls.action'))->width(100)->addClass('text-center'),
         ];
     }
-
 
 
     /**
@@ -118,6 +137,8 @@ class ProductDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Product_' . date('YmdHis');
+        $filename = 'product-table_' . date('YmdHis');
+        Log::info("Generated filename: $filename"); // تسجيل اسم الملف في الـ Log
+        return $filename;
     }
 }

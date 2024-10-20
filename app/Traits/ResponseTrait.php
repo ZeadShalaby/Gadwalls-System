@@ -6,13 +6,13 @@ use App\Models\Role;
 trait ResponseTrait
 {
 
-    // todo return Locale for languages
+    // ?todo return Locale for languages
     public function getCurrentLang()
     {
         return app()->getLocale();
     }
 
-    // todo return Errors for All Api
+    // ?todo return Errors for All Api
     public function returnError($errNum, $msg)
     {
         return response()->json([
@@ -22,7 +22,7 @@ trait ResponseTrait
         ]);
     }
 
-    // todo return success messages
+    // ?todo return success messages
     public function returnSuccessMessage($msg, $errNum = "S000")
     {
         return [
@@ -32,7 +32,7 @@ trait ResponseTrait
         ];
     }
 
-    // todo return success Account
+    // ?todo return success Account
     public function returnSuccessAccount($msg, $email, $errNum = "S000")
     {
         return [
@@ -44,7 +44,7 @@ trait ResponseTrait
     }
 
 
-    // todo return All Data I Want
+    // ?todo return All Data I Want
     public function returnData($key, $value, $msg = "")
     {
         return response()->json([
@@ -55,7 +55,7 @@ trait ResponseTrait
         ]);
     }
 
-    // todo return info
+    // ?todo return info
     public function profiles()
     {
 
@@ -63,13 +63,13 @@ trait ResponseTrait
 
     }
 
-    // todo return Validation Errors
+    // ?todo return Validation Errors
     public function returnValidationError($code = "E001", $validator)
     {
         return $validator->errors()->first();
     }
 
-    // todo return 
+    // ?todo return 
     public function returnCodeAccordingToInput($validator)
     {
         $inputs = array_keys($validator->errors()->toArray());
@@ -77,7 +77,7 @@ trait ResponseTrait
         return $code;
     }
 
-    // todo return error for code 
+    // ?todo return error for code 
     public function getErrorCode($input)
     {
         if ($input == "name")
@@ -196,7 +196,7 @@ trait ResponseTrait
             return "";
     }
 
-    // todo return check error for tickets 
+    // ?todo return check error for tickets 
     public function checkTickets($tickets)
     {
         if (!$tickets->id) {

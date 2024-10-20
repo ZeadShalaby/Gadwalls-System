@@ -1,28 +1,22 @@
-// عناصر HTML
 const body = document.querySelector("body"),
     sidebar = body.querySelector("nav"),
     toggle = body.querySelector(".toggle"),
-    searchBtn = body.querySelector(".search-box"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+    searchBtn = body.querySelector(".search-box");
+
+// استرجاع الحالة من localStorage
+if (localStorage.getItem("sidebarClosed") === "true") {
+    sidebar.classList.add("close");
+}
 
 // إضافة حدث النقر على الزر لفتح وإغلاق الشريط الجانبي
 toggle.addEventListener("click", () => {
     sidebar.classList.toggle("close");
+    // حفظ الحالة في localStorage
+    localStorage.setItem("sidebarClosed", sidebar.classList.contains("close"));
 });
 
 // عند النقر على صندوق البحث، يتم فتح الشريط الجانبي
 searchBtn.addEventListener("click", () => {
     sidebar.classList.remove("close");
-});
-
-// التحكم في وضع الإضاءة والظلام
-modeSwitch.addEventListener("click", () => {
-    body.classList.toggle("dark");
-
-    if (body.classList.contains("dark")) {
-        modeText.innerText = "Light mode";
-    } else {
-        modeText.innerText = "Dark mode";
-    }
+    localStorage.setItem("sidebarClosed", "false"); // تحديث الحالة في localStorage
 });

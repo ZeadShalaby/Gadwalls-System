@@ -16,6 +16,7 @@ class StockController extends Controller
      */
     public function table(StockDataTable $datatable)
     {
+
         return $datatable->render('data.index'); // Ensure the view name is correct
     }
 

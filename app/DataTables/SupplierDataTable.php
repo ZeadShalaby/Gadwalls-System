@@ -29,7 +29,10 @@ class SupplierDataTable extends DataTable
             ->setRowId('id')
             ->editColumn('role', function ($row): mixed {
                 return $row->getRoleName();
+            })->editColumn('action', function ($row) {
+                return view('Data.Action.supplier', ['id' => $row->id])->render();
             });
+
     }
 
     /**

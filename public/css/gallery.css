@@ -1,0 +1,81 @@
+.gallery {
+    --s: 150px;
+    --g: 10px;
+    display: grid;
+    margin: calc(var(--s) + var(--g) + 40px);
+    place-content: center;
+    grid-template-columns: repeat(3, var(--s));
+    grid-template-rows: repeat(3, var(--s));
+    gap: var(--g);
+    --_x: 0;
+    --_y: 1;
+    --_t: 1;
+    --_r: 0;
+    /* Variable for rotation */
+}
+
+.gallery>img {
+    grid-area: 1/1;
+    width: var(--s);
+    aspect-ratio: 1.15;
+    object-fit: cover;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1)) rotate(var(--_r, 0deg));
+    /* Apply rotation */
+    cursor: pointer;
+    filter: grayscale(80%);
+    transition: transform 0.4s ease, filter 0.2s linear;
+    /* Smooth transition */
+}
+
+/* On hover */
+.gallery>img:hover {
+    filter: grayscale(0);
+    z-index: 1;
+    --_t: 1.2;
+    /* Scale up */
+    --_r: 15deg;
+    /* Rotate on hover */
+}
+
+/* Positioning adjustments for specific images */
+.gallery>img:nth-child(1) {
+    --_y: calc(-100% - var(--g));
+}
+
+.gallery>img:nth-child(7) {
+    --_y: calc(100% + var(--g));
+}
+
+.gallery>img:nth-child(3),
+.gallery>img:nth-child(5) {
+    --_x: calc(-75% - .87 * var(--g));
+}
+
+.gallery>img:nth-child(4),
+.gallery>img:nth-child(6) {
+    --_x: calc(75% + .87 * var(--g));
+}
+
+.gallery>img:nth-child(3),
+.gallery>img:nth-child(4) {
+    --_y: calc(-50% - .5 * var(--g));
+}
+
+.gallery>img:nth-child(5),
+.gallery>img:nth-child(6) {
+    --_y: calc(50% + .5 * var(--g));
+}
+
+.gallery>img {
+    transition: transform 0.4s ease, filter 0.2s linear;
+    transform-style: preserve-3d;
+    /* Enable 3D transforms */
+}
+
+.gallery>img:hover {
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(var(--_t, 1)) rotateY(180deg);
+    /* Flip effect */
+    filter: grayscale(0);
+    z-index: 1;
+}

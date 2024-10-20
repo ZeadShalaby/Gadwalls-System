@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+button.save-btn i {
+    color: #28a745;
+    /* لون أيقونة الحفظ */
+}
+
+button.cancel-btn i {
+    color: #dc3545;
+    /* لون أيقونة الإلغاء */
+}
+
+button:hover i {
+    color: #000;
+    /* تغيير اللون عند تمرير الفأرة */
+}

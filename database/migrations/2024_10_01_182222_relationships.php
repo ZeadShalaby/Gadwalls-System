@@ -19,6 +19,7 @@ return new class extends Migration {
         //? products relations
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
         });
 
         //? salebills relations

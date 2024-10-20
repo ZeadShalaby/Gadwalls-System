@@ -11,11 +11,12 @@
 :root {
     /* ===== Colors ===== */
     --body-color: #F9F9F9;
-    --sidebar-color: #242526;
-    --primary-color: #3a3b3c;
-    --primary-color-light: #3a3b3c;
+    --sidebar-color: #222751;
+    /*#242526*/
+    --primary-color: #e5e6e7;
+    --primary-color-light: #e9ebec;
     --toggle-color: #fff;
-    --text-color: #ccc;
+    --text-color: #f8f8f8;
 
 
     /* ====== Transition ====== */
@@ -50,7 +51,6 @@ body.dark {
     position: fixed;
     top: 0;
     right: 0;
-    /* تعديل: من left إلى right */
     height: 100%;
     width: 250px;
     padding: 10px 14px;
@@ -62,6 +62,23 @@ body.dark {
 .sidebar.close {
     width: 88px;
 }
+
+.toggle {
+    font-size: 24px;
+    cursor: pointer;
+    color: #222751;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.toggle:hover {
+    color: #007bff;
+}
+
+.sidebar.close .toggle {
+    transform: rotate(180deg);
+}
+
 
 /* ===== Reusable code - Here ===== */
 .sidebar li {
@@ -338,4 +355,8 @@ body.dark .switch::before {
 
 body.dark .home .text {
     color: var(--text-color);
+}
+
+span {
+    margin-top: 10px;
 }

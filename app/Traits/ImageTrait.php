@@ -7,7 +7,7 @@ use App\Models\Role;
 
 trait ImageTrait
 {
-    // todo save image 
+    // ?todo save image 
     public function saveimage($image, $folder)
     {
         //? Ensure the folder exists
@@ -24,7 +24,7 @@ trait ImageTrait
     }
 
 
-    // todo save pdf
+    // ?todo save pdf
     public function savePdf($file, $folder)
     {
         $folderPath = public_path($folder);

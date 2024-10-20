@@ -20,9 +20,7 @@ class CheckAuth
         try {
             $auth = auth()->user();
             if (!$auth) {
-                if (!Auth::guard('supplier')->check()) {
-                    return redirect()->route('users.loginindex')->with(['error' => 'Unauthenticated']);
-                }
+                return redirect()->route('loginindex')->with(['error' => 'Unauthenticated']);
             }
         } catch (\Exception $e) {
         }

@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('commercial')->unique(); //? السجل التجاري   //  commercial register
             $table->string('tax')->unique();  //? الرقم الضريبي         //  tax id
             $table->text('address');
+            $table->string('phone')->nullable();
             $table->unsignedBigInteger('role')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

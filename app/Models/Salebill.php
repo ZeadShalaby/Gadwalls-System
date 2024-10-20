@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Store;
+use App\Enums\TaxEnums;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +24,10 @@ class Salebill extends Model
         'user_id',
         'salary',
         'notes',
+        'total',
         'quantity',
+        'type_discount',
+        'type_payment'
     ];
 
     /**
@@ -50,6 +54,12 @@ class Salebill extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Method to get the name from the selected_option value (number)
+    public static function getOptionNameByValue($value)
+    {
+        return TaxEnums::tryFrom($value)?->name ?? 'Unknown Option';
     }
 
 }

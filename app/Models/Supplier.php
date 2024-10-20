@@ -58,7 +58,6 @@ class Supplier extends Model
             RoleEnums::SUPPLIERS->value => 'Suppliers',
             RoleEnums::USER->value => 'User',
         ];
-
         return $roles[$this->role] ?? 'Unknown';
     }
 }

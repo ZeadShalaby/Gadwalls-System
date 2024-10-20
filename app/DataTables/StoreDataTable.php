@@ -29,7 +29,13 @@ class StoreDataTable extends DataTable
             ->setRowId('id')
             ->editColumn('supplier_id', function ($row): mixed {
                 return $row->supplier->name;
+            })->editColumn('type', function ($row): mixed {
+                return $row->getTypeStore();
+            })->editColumn('action', function ($row) {
+                return view('Data.Action.store', ['id' => $row->id])->render();
             });
+
+
     }
 
     /**

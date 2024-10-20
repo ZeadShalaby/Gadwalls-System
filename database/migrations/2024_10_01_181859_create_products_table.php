@@ -14,10 +14,12 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->unsignedBigInteger('code')->unique();
             $table->integer('quantity')->default(1);
             $table->integer('price')->default(100);
             $table->timestamp('expire_date');
+            $table->timestamp('empty_at')->default(now());
             $table->timestamps();
         });
 

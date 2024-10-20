@@ -26,6 +26,9 @@ class SalebillFactory extends Factory
             'salary' => $this->faker->randomFloat(2, 1000, 100000),
             'notes' => $this->faker->unique()->regexify('[A-Z0-9]{15}'),
             'quantity' => $this->faker->numberBetween(1, 100),
+            'type_payment' => $this->faker->numberBetween(0, 2),
+            'type_discount' => $this->faker->numberBetween(0, 2),
+            'total' => $this->faker->numberBetween(1000, 100000),
         ];
     }
 }

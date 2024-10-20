@@ -17,6 +17,14 @@ html {
 
 }
 
+.file-input {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
 .navbar-left,
 .navbar-center,
 .navbar-right {

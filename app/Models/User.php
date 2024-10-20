@@ -28,6 +28,7 @@ class User extends Authenticatable
         'commercial',
         'tax',
         'role',
+        'phone',
         'address',
     ];
 
@@ -74,4 +75,22 @@ class User extends Authenticatable
 
         return $roles[$this->role] ?? 'Unknown';
     }
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    public function media()
+    {
+        return $this->morphMany(Media::class, 'mediaable');
+    }
+
+
+    public function media_one()
+    {
+        return $this->morphOne(Media::class, 'mediaable');
+    }
+
 }
