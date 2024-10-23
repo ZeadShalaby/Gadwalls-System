@@ -67,7 +67,7 @@ Clone the project
 
 ```bash
 
-https://github.com/ZeadShalaby/Certificate-System
+https://github.com/ZeadShalaby/Gadwalls-System
 ```
 
 Go to the project directory
